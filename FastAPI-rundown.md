@@ -87,8 +87,33 @@ Since path operations are evaluated in order, make sure the fixed path is declar
 
 Otherwise GET /users/me would send "me" as {user_id}, and completely skip the definition for users/me.
 
+## Predefining path parameters using Enumerations
 
+What if you want predefined valid values for an operation that receives a path parameter?
 
+### This can be done by creating an Enum class.
+
+import Enum,
+
+    from enum import Enum
+    
+Then create a subclass that inherits from str and Enum.
+
+    class ModelName(str, Enum):
+        Value1 = "Value1"
+        Value2 = "Value2"
+        Value3 = "Value3"
+        
+Now, we can define the type of the argument to be of type "ModelName". This allows us to check if the value passed exists in the class.
+
+    @app.get("/models/{model_name}")
+    async def get_model(model_name: ModelName):
+        if model_name is ModelName.Value1:
+            return {"result": "valid"}
+        if model_name.value = "Value2":
+            return {"result": "valid"}
+
+As you can see, there are two ways to check if the argument passed matches the predefined values.
 
     
 
