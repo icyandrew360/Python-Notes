@@ -1,4 +1,4 @@
-#### Layouts of long functions:
+## Layouts of long functions:
 add an extra level of indentation to distinguish arguments from the rest.
   ex:
   def long_function_name(
@@ -17,7 +17,7 @@ hanging indents should add a level when calling functions.
   foo = long_function_name(var_one, var_two,
       var_three)
   
-#### Imports:
+## Imports:
 Usually, keep imports on separate lines.
 
   import os
