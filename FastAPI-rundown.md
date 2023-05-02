@@ -4,9 +4,9 @@ When uvicorn runs on localhost, it makes a GET request.
 
 We can define the response to this, assuming the app is defined by app = FastAPI();
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+    @app.get("/")
+    async def root():
+        return {"message": "Hello World"}
     
 This example sends a JSON response.
 
@@ -33,9 +33,9 @@ We can define actions for different paths (endpoint, route are alternative names
 With HTTP protocols, you can communicate to each path using one or more of these "methods". These methods are called operations.
 Knowing this, we can go back to look at our first example.
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+    @app.get("/")
+    async def root():
+        return {"message": "Hello World"}
 
 We see that this function is in charge of handling requests pertaining to the path "/", using a GET operation.
 
@@ -44,10 +44,11 @@ This Decorator in particular tells FastAPI that the function corresponds to path
 
 #### Note on async def:
 Use async when third party libraries need to be called with await, ie.
-async def read_results():
-    results = await some_library()
-    return results
-    
+
+    async def read_results():
+        results = await some_library()
+        return results
+
 otherwise use regular def.
 
 ## Path parameters
