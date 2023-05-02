@@ -50,6 +50,19 @@ async def read_results():
     
 otherwise use regular def.
 
+## Path parameters
+
+It may be useful to take in parameters from the path and use them in the defined function. We can do this using the same 
+format used in python string formatting, for example:
+
+    app = FastAPI()
+    
+    @app.get("/items/{item_id}")
+    async def read_item(item_id):
+        return {"item_id" : item_id}
+        
+Now, this path parameter will be passed to the function as the argument item_id. This will handle all requests with the 
+path of /items/*something*.
 
     
 
