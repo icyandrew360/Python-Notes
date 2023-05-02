@@ -64,5 +64,15 @@ format used in python string formatting, for example:
 Now, this path parameter will be passed to the function as the argument item_id. This will handle all requests with the 
 path of /items/*something*.
 
+Note that you can declare the type of the path parameters, using standard Python typing.
+    
+    @app.get('/items/{item_id}')
+    async def read_item(item_id: int):
+        return {"item_id": item_id}
+       
+Then if we GET request items/3 for example, it will return {"item_id": 3} where 3 is an int.
+
+
+
     
 
