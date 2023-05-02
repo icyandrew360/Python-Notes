@@ -73,6 +73,21 @@ Note that you can declare the type of the path parameters, using standard Python
        
 Then if we GET request items/3 for example, it will return {"item_id": 3} where 3 is an int.
 
+#### Note that types are checked and validated. If an invalid path is supplied, ie GET request items/foo, an HTTP error occurs.
+
+The same error would appear if a float is provided instead of int as well.
+Data validation is performed behind the scenes by Pydantic. 
+
+### Be careful of the order of your path operations.
+
+There are situations where you will have a fixed path as well as path operations, for example
+/users/me, and /users/{user_id}.
+
+Since path operations are evaluated in order, make sure the fixed path is declared before the one with {user_id}.
+
+Otherwise GET /users/me would send "me" as {user_id}, and completely skip the definition for users/me.
+
+
 
 
     
